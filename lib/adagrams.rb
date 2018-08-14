@@ -15,7 +15,6 @@ def draw_letters
 
 end
 
-
 def uses_available_letters?(input, letters_in_hand)
   word = input.chars
   word.each do |letter|
@@ -26,4 +25,32 @@ def uses_available_letters?(input, letters_in_hand)
     end
   end
   return true
+end
+
+def score_word(word)
+  score = 0
+  score_word = word.upcase.chars
+  score_word.each do |letter|
+    if %w[A E I O U L N R S T].include?(letter)
+      score += 1
+    elsif %w[D G].include?(letter)
+      score += 2
+    elsif %w[B C M P].include?(letter)
+      score += 3
+    elsif %w[F H V W Y].include?(letter)
+      score += 4
+    elsif %w[K].include?(letter)
+      score += 5
+    elsif %w[J X].include?(letter)
+      score += 8
+    elsif %w[Q Z].include?(letter)
+      score += 10
+    end
+  end
+
+  if score_word.length >= 7 && score_word.length <= 10
+    score += 8
+  end
+
+  return score
 end
