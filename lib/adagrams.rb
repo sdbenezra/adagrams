@@ -1,3 +1,5 @@
+# random change
+require 'pry'
 def draw_letters
   letters_concatenated = []
   hand = []
@@ -66,12 +68,13 @@ def highest_score_from(words)
   end
 
   array.each do |hash|
-    if hash[:score] > max_score
+    if hash[:score] == max_score
+      winning_word = hash[:word]
+      max_values << {word: winning_word, score: max_score}
+    elsif hash[:score] > max_score
       max_values = []
       max_score = hash[:score]
       winning_word = hash[:word]
-      max_values << {word: winning_word, score: max_score}
-    elsif hash[:score] = max_score
       max_values << {word: winning_word, score: max_score}
     end
   end
@@ -80,12 +83,15 @@ def highest_score_from(words)
     # if array[:word].length == 10
     #   hash = {word: array[:word], score: array[:score].to_i}
     #   return hash
-
+    hash = {}
     if array[:word].length < min_length
       min_length = array[:word].length
+      winning_word = array[:word]
+      max_score = array[:score]
       hash = {word: winning_word, score: max_score}
+      binding.pry
     end
   end
-  hash = {word: winning_word, score: max_score}
+  #hash = {word: winning_word, score: max_score}
   return hash
 end
