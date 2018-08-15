@@ -1,5 +1,4 @@
-# random change
-require 'pry'
+# require 'pry'
 def draw_letters
   letters_concatenated = []
   hand = []
