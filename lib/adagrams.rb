@@ -1,4 +1,5 @@
 # require 'pry'
+require_relative '../assets/dictionary-english.csv'
 def draw_letters
   letters_concatenated = []
   hand = []
@@ -92,4 +93,13 @@ def highest_score_from(words)
     end
   end
   return hash
+end
+
+
+def is_in_english_dict?(input)
+    if dictionary-english.include?(input)
+      return true
+    else
+      return false
+    end
 end
