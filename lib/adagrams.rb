@@ -6,7 +6,7 @@ def draw_letters
 
   initial_array = [["A", 9], ["B", 2], ["C", 2], ["D", 4], ["E", 12], ["F", 2], ["G", 3], ["H", 2], ["I", 9], ["J", 1], ["K", 1], ["L", 4], ["M", 2], ["N", 6], ["O", 8], ["P", 2], ["Q", 1], ["R", 6], ["S", 4], ["T", 6], ["U", 4], ["V", 2], ["W", 2], ["X", 1], ["Y", 2], ["Z", 1]]
 
-  letter_pool = initial_array.map do |x|
+  initial_array.each do |x|
     letters_concatenated.concat([x[0]] * x[1])
   end
 
@@ -61,6 +61,7 @@ def highest_score_from(words)
   winning_word = ""
   max_values = []
   min_length = 10
+  hash = {}
 
   words.each do |word|
     score = score_word(word)
@@ -80,18 +81,16 @@ def highest_score_from(words)
   end
 
   max_values.each do |array|
-    # if array[:word].length == 10
-    #   hash = {word: array[:word], score: array[:score].to_i}
-    #   return hash
-    hash = {}
+    if array[:word].length == 10
+      hash = {word: array[:word], score: array[:score].to_i}
+      return hash
+    end
     if array[:word].length < min_length
       min_length = array[:word].length
       winning_word = array[:word]
       max_score = array[:score]
       hash = {word: winning_word, score: max_score}
-      binding.pry
     end
   end
-  #hash = {word: winning_word, score: max_score}
   return hash
 end
