@@ -51,6 +51,42 @@ def score_word(word)
   if score_word.length >= 7 && score_word.length <= 10
     score += 8
   end
-
   return score
+end
+
+def highest_score_from(words)
+  array = []
+  max_score = 0
+  winning_word = ""
+  max_values = []
+  min_length = 10
+
+  words.each do |word|
+    score = score_word(word)
+    array << {word: word, score: score}
+  end
+
+  array.each do |hash|
+    if hash[:score] > max_score
+      max_values = []
+      max_score = hash[:score]
+      winning_word = hash[:word]
+      max_values << {word: winning_word, score: max_score}
+    elsif hash[:score] = max_score
+      max_values << {word: winning_word, score: max_score}
+    end
+  end
+
+  max_values.each do |array|
+    # if array[:word].length == 10
+    #   hash = {word: array[:word], score: array[:score].to_i}
+    #   return hash
+
+    if array[:word].length < min_length
+      min_length = array[:word].length
+      hash = {word: winning_word, score: max_score}
+    end
+  end
+  hash = {word: winning_word, score: max_score}
+  return hash
 end
