@@ -1,4 +1,3 @@
-# random change
 def draw_letters
   letters_concatenated = []
   hand = []
