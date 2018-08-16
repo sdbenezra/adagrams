@@ -1,5 +1,6 @@
+# require 'pry'
 require 'csv'
-require 'pry'
+
 
 def draw_letters
   letters_concatenated = []
@@ -96,14 +97,14 @@ def highest_score_from(words)
   return hash
 end
 
-
 def is_in_english_dict?(input)
-    verify = false
-    dictionary = CSV.read('assets/dictionary-english.csv')
-    word = input.downcase
-    if dictionary.include?(word)
-      return true
-    else
-      return false
+  check = false
+  dictionary = CSV.open('assets/dictionary-english.csv')
+  word = input.downcase
+  dictionary.each do |row|
+    if row.include?(word)
+      check = true
     end
+  end
+  return check
 end
