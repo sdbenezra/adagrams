@@ -1,5 +1,6 @@
-# require 'pry'
-require_relative '../assets/dictionary-english.csv'
+require 'csv'
+require 'pry'
+
 def draw_letters
   letters_concatenated = []
   hand = []
@@ -97,7 +98,10 @@ end
 
 
 def is_in_english_dict?(input)
-    if dictionary-english.include?(input)
+    verify = false
+    dictionary = CSV.read('assets/dictionary-english.csv')
+    word = input.downcase
+    if dictionary.include?(word)
       return true
     else
       return false
