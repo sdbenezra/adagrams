@@ -1,7 +1,7 @@
 # require 'pry'
 require 'csv'
 
-
+# Draws 10 random letters from alphabetic array
 def draw_letters
   letters_concatenated = []
   hand = []
@@ -18,6 +18,7 @@ def draw_letters
 
 end
 
+# Determines if user word uses letters in hand
 def uses_available_letters?(input, letters_in_hand)
   word = input.chars
   word.each do |letter|
@@ -30,6 +31,7 @@ def uses_available_letters?(input, letters_in_hand)
   return true
 end
 
+# Calculates score for user word
 def score_word(word)
   score = 0
   score_word = word.upcase.chars
@@ -57,6 +59,7 @@ def score_word(word)
   return score
 end
 
+# Determines highest scoring word and returns both word and score
 def highest_score_from(words)
   array = []
   max_score = 0
@@ -97,6 +100,7 @@ def highest_score_from(words)
   return hash
 end
 
+# Determines whether users word is a valid English word
 def is_in_english_dict?(input)
   check = false
   dictionary = CSV.open('assets/dictionary-english.csv')
